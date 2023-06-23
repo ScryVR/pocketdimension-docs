@@ -4,6 +4,8 @@
 
 ## Getting started with Pocket Dimension
 
+> 📣 When Pocket Dimension's crowdfunding campaign goes live, this section will include links to YouTube Shorts that show the flows in question.
+
 Pocket Dimension works best on a mobile device or VR headset. It's a web app, so simply navigate to [pocketdimension.io](https://pocketdimension.io) to get started. Once Pocket Dimension loads, you'll be prompted for location permissions. Once Pocket Dimension reads your location, you'll be able to view terrain, check what resources are available, look for connected users, and enter the dimension.
 
 Once the user enters a dimension, they can use the trackpad to walk around and explore the landscape. A number of glowing purple orbs randomly appear and disappear across the terrain. These orbs are resource generators. Each orb produces some default number of resources at regular intervals. Interacting with orb increases a counter. When the orbs generate resources, the number of resources they generate increases based on this counter. The counter resets whenever resources are generated. This allows users to either actively or passively collect resources. The number of resources generated is one of the dimension properties, just like the resource types and shape of the landscape. If you're very lucky, you'll find a dimension that generates a large base number of rare resources.
