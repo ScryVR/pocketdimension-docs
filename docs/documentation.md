@@ -12,7 +12,9 @@ Resources can be used to build things. Pocket Dimension has a simple 3D modeling
 
 Group selection and blueprints are important parts of Pocket Dimension's build system. Tapping on additional objects while in "interact" mode allows you to select things. This allows you to transform multiple things at once. Tapping the "group" button while multiple objects are selected makes these groups permanent. Groups can be easily copied selecting "build copy" in the action menu. Groups can be turned into blueprints, which can be reused even more easily and even shared with other users.
 
-## Technical information
+## Technical architecture
+
+> 📣 Mermaid diagrams don't currently work on GitHub, but you can paste the diagrams listed below into an [online Markdown renderer](https://markdownlivepreview.com/).
 
 ### Geolocation sequence
 
@@ -26,16 +28,16 @@ sequenceDiagram
   participant did_api as Dimension API
   participant terr as Terrainosaurus terrain generator
   participant db as Dimension database
-  
+
   user->>client: Open app
   client->>gps: Get user location
-    gps->>client: 
+    gps->>client:
   client->>did_api: Get dimension attributes
-    did_api->>client: 
+    did_api->>client:
   client->>terr: Generate terrain
-    terr->>client: 
+    terr->>client:
   client->>db: Load previously-built structures from database
-    db->>client: 
+    db->>client:
 ```
 
 ### Multiplayer initialization sequence
@@ -51,19 +53,48 @@ sequenceDiagram
   participant did_api as Dimension API
   participant ws as Serverless Websocket API
   participant others as Other connected users
-  
+
   user->>client: Open app
   client->>gps: Get user location
-    gps->>client: 
+    gps->>client:
   client->>did_api: Get dimension attributes
-    did_api->>client: 
+    did_api->>client:
   client->>ws: Connect to websocket channel using dimension ID
   ws->>others: Notify other connected users of new connection
   others->>ws: Send WebRTC SDP offer
-    ws->>client: 
+    ws->>client:
   client->>ws: Send WebRTC SDP answer
-    ws->>others: 
+    ws->>others:
   others->>client: Create p2p network.<br>Broadcast audio, video, and user actions across network.
-  client->>others: 
-  
+  client->>others:
+
+```
+
+### Data persistence sequence
+
+The following diagram details what occurs when users perform actions such as creating objects, spending energy, collecting resources, etc.
+This process has been chosen in order to optimize costs and enable transaction validation without blocking user actions.
+
+```mermaid
+sequenceDiagram
+  participant user as User
+  participant client as App client
+  participant worker as Background service worker
+  participant p2p as Peer-to-Peer network
+  participant others as Other connected users
+  participant queue as Transaction queue
+  participant validator as Transaction validator
+  participant db as Permanent storage
+
+  user->>client: Performs action
+    client->>client: Log action in memory
+    p2p->>others: Broadcast changes
+  others->>p2p: All other users disconnect
+    p2p->>client: 
+  user->>client: Close app
+    client->>worker: Create service worker
+  worker->>queue: Push changes to backend
+  queue->>validator: Process changes from queue
+  validator->>db: Store updated state
+
 ```
