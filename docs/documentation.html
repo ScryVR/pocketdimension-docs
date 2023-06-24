@@ -23,11 +23,45 @@
     type="module"
     src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"
   ></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 58%,
+        rgba(204, 204, 204, 0.7959777661064426) 100%
+      );
+    }
+  </style>
 </head>
 
 <body>
   <!-- Render zero-md in light dom -->
-  <zero-md id="app" src="./documentation_src.md" no-shadow manual-render></zero-md>
+  <zero-md id="app" src="./documentation_src.md" no-shadow manual-render>
+    <template>
+      <style>
+        zero-md {
+          font-family: "Roboto Mono", monospace;
+          height: 100%;
+          overflow: auto;
+          padding: 2em;
+          display: block;
+          box-sizing: border-box;
+        }
+        zero-md::after {
+          display: block;
+          content: "";
+          height: 100px;
+          width: 100%;
+        }
+      </style>
+    </template>
+  </zero-md>
   <script>
     app.addEventListener('zero-md-ready', async () => {
       // Create custom marked renderer

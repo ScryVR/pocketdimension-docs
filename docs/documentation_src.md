@@ -32,8 +32,6 @@ Portals allow users to visit dimensions without being in their corresponding phy
 
 ## Technical architecture
 
-> 📣 Mermaid diagrams don't currently work on GitHub, but you can paste the diagrams listed below into an [online Markdown renderer](https://markdownlivepreview.com/).
-
 ### Geolocation sequence
 
 The following diagram shows how users' GPS coordinates are used to deterministically generate terrain.
@@ -56,6 +54,7 @@ sequenceDiagram
     terr->>client: 
   client->>db: Load previously-built structures from database
     db->>client: 
+  client->>client: Render dimension
 ```
 
 ### Protecting users' privacy
@@ -104,8 +103,8 @@ sequenceDiagram
     ws->>client: 
   client->>ws: Send WebRTC SDP answer
     ws->>others: 
-  others->>client: Create p2p network.<br>Broadcast audio, video, and user actions across network.
-  client->>others: 
+  others->>client: Receive incoming peer-to-peer data streams
+  client->>others: Initialize outgoing peer-to-peer data streams
 
 ```
 
