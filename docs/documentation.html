@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pocket Dimension</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap" rel="stylesheet"> -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap"
+    rel="stylesheet"
+  />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="description"
+    content="Pocket Dimension puts a virtual world at every GPS coordinate on Earth. Get the details here."
+  />
+  <!-- Load mermaid -->
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"
+  ></script>
+</head>
+
+<body>
+  <!-- Render zero-md in light dom -->
+  <zero-md id="app" src="./documentation_src.md" no-shadow manual-render></zero-md>
+  <script>
+    app.addEventListener('zero-md-ready', async () => {
+      // Create custom marked renderer
+      const renderer = new marked.Renderer()
+      renderer.code = function (code, lang) {
+        return lang === 'mermaid'
+          ? `<div class="mermaid">${code}</div>`
+          : `<pre><code>${code}</code></pre>`
+      }
+      await app.render({ renderer })
+      mermaid.init()
+    })
+  </script>
+</body>
