@@ -1,6 +1,12 @@
+[🏠 Home](./)
+
 # Pocket Dimension Documentation
 
-**NOTE:** At the time of writing, Pocket Dimension is still a work in progress. Some sections of this documentation are aspirational, and indicate an intended final state rather than the current implementation. In-progress features are denoted with a "🏗️", e.g., "Pocket Dimension will make you run faster, jump higher, and live longer (🏗️)". If you have questions about the exact implementation state or any other topic, please email [docs@pocketdimension.io](mailto://docs@pocketdimension.io)
+---
+
+_**NOTE:** At the time of writing, Pocket Dimension is still a work in progress. Some sections of this documentation are aspirational, and indicate an intended final state rather than the current implementation. In-progress features are denoted with a "🏗️", e.g., "Pocket Dimension will make you run faster, jump higher, and live longer (🏗️)". If you have questions about the exact implementation state or any other topic, please email [docs@pocketdimension.io](mailto://docs@pocketdimension.io)_
+
+---
 
 ## Using Pocket Dimension
 
