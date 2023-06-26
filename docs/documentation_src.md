@@ -4,7 +4,7 @@
 
 ---
 
-_**NOTE:** At the time of writing, Pocket Dimension is still a work in progress. Some sections of this documentation are aspirational, and indicate an intended final state rather than the current implementation. In-progress features are denoted with a "🏗️", e.g., "Pocket Dimension will make you run faster, jump higher, and live longer (🏗️)". If you have questions about the exact implementation state or any other topic, please email [docs@pocketdimension.io](mailto://docs@pocketdimension.io)_
+_**NOTE:** At the time of writing, Pocket Dimension is still a work in progress. Some sections of this documentation are aspirational, and indicate an intended final state rather than the current implementation. In-progress features are denoted with a "🏗️", e.g., "Pocket Dimension will make you run faster, jump higher, and live longer (🏗️)". If you have questions about the exact implementation state or any other topic, please email [docs@pocketdimension.io](mailto://docs@pocketdimension.io)._
 
 ---
 
@@ -20,19 +20,19 @@ Resources can be used to build things. Pocket Dimension has a simple 3D modeling
 
 Group selection and blueprints are important parts of Pocket Dimension's build system. Tapping on additional objects while in "interact" mode allows you to select things. This allows you to transform multiple things at once. Tapping the "group" button while multiple objects are selected makes these groups permanent. Groups can be easily copied selecting "build copy" in the action menu. Groups can be turned into blueprints, which can be reused even more easily and even shared with other users (🏗️).
 
-## The Pocket Dimension economy (🏗️)
+## The Pocket Dimension economy
 
 Doing things in Pocket Dimension consumes energy and resources. Every user receives an alottment of energy per day. To exceed this amount of energy, users must do things to get other users to give them energy. Examples of energy transactions between users include:
 
-* Visiting a dimension claimed by another user. Each minute you spend in their dimension sends energy from them to you.
-* Selling resources to other users.
-* Using another user's blueprints to build things.
+* Visiting a dimension claimed by another user. Each minute you spend in their dimension sends energy from them to you. (🏗️)
+* Selling resources to other users. (🏗️)
+* Using another user's blueprints to build things. (🏗️)
 
 Other interactions in Pocket Dimension cause energy to be destroyed.
 
 * Building or resizing objects
 * Collecting resources
-* Using portals to travel to distant dimensions
+* Using portals to travel to distant dimensions (🏗️)
 
 Portals allow users to visit dimensions without being in their corresponding physical locations. Using a portal costs an amount of energy that increases exponentially with the distance between the physical locations. This incentivizes building a network of short hops in order to travel efficiently.
 
@@ -158,3 +158,23 @@ sequenceDiagram
   validator->>db: Store updated state
 
 ```
+
+## Roadmap
+
+_This section is subject to change. Topics will be introduced and reprioritized based on user feedback._
+
+Future development topics include:
+
+* Improved terrain
+  * Increased variety
+  * Grass
+  * Manual terraforming
+  * Terrain features like rivers
+  * Better Level of Detail management
+* Blueprint features
+  * Blueprint sharing
+  * Script attachment
+  * Additional resources
+* Backend infrastructure cost optimization
+* Anti-cheat system
+* Economy features for resource exchange between users
