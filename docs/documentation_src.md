@@ -10,7 +10,7 @@ _**NOTE:** At the time of writing, Pocket Dimension is still a work in progress.
 
 ## Using Pocket Dimension
 
-> 🏗️ When Pocket Dimension's crowdfunding campaign goes live, this section will include links to YouTube Shorts that show the flows in question.
+_🏗️ I'll eventually create video tutorials to make these description easier to follow. In the meantime, [the pitch video](https://youtu.be/Ol2s9Ntewts) has a few clips of what it's like to use Pocket Dimension._
 
 Pocket Dimension works best on a mobile device or VR headset. It's a web app, so simply navigate to [pocketdimension.io](https://pocketdimension.io) to get started. Once Pocket Dimension loads, you'll be prompted for location permissions. Once Pocket Dimension reads your location, you'll be able to view terrain, check what resources are available, look for connected users, and enter the dimension.
 
