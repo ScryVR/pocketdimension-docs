@@ -36,13 +36,17 @@ Other interactions in Pocket Dimension cause energy to be destroyed.
 
 Portals allow users to visit dimensions without being in their corresponding physical locations. Using a portal costs an amount of energy that increases exponentially with the distance between the physical locations. This incentivizes building a network of short hops in order to travel efficiently.
 
-## Advanced building topics (🏗️)
+## Advanced building topics
 
 Simple blueprints in Pocket Dimension are static collections of basic shapes like cubes and spheres. Advanced blueprints are also collections of basic shapes, but they can also execute simple scripts. Blueprints cost a certain amount of energy and resources to build. The amounts depend on the size of the individual pieces.
 
-Adding scripts to blueprints requires that the blueprint contain certain amounts of certain resources. For example, in the current provisional draft (which is not yet published due to its incompleteness), adding animations to structures requires a resource called "dynamium". The amount of dynamium required will depend on how far and how fast the blueprint moves, and the size of the moving pieces. Another provisional example includes requiring hematite to create structures that cause resource drops to spawn nearby.
+Adding scripts to blueprints requires that the blueprint contain certain amounts of certain resources. For example, in the current provisional draft (which is not yet published due to its incompleteness), adding animations to structures requires a resource called "dynamium". The amount of dynamium required will depend on how far and how fast the blueprint moves, and the size of the moving pieces. Another provisional example includes requiring hematite to create structures that cause resource drops to spawn nearby. (🏗️)
 
 These design requirements are included to prevent users from creating cheap game-breaking inventions, adding a functional element to the design process, and ensuring affordance (i.e., allowing a thing's function to be intuited from its form).
+
+## Claiming dimensions
+
+The first step to claiming a dimension is to visit its physical location. Once you do this, you'll be able to stake a claim to it. If you claim a dimension, you can choose to make it public, private, or invite-only. Claims to dimensions only last 1 week. You'll have to keep visiting that location to refresh your claim. If your claim expires, anyone else that visits will be able to claim the dimension for themselves. They'll have to give some energy to buy out your claim, and the amount of energy required depends on how much stuff you've built in the dimension. If you want to ensure that you never lose your dimension, you can build a massive structure that will take days to buy. (🏗️)
 
 ## Technical architecture
 
@@ -77,6 +81,8 @@ sequenceDiagram
   client->>client: Render dimension
 ```
 
+It should be noted that the terrain generated is **not** based on real-world topographical data. This is a design choice influenced by constraints such as GPS precision, sourcing the topographical data, and the simple fact that users will be able modify the landscape at will (🏗️). While it may be technically feasible to enable some kind of scanning or importing feature later, this is not something that will be in the initial release.
+
 ### Protecting users' privacy
 
 Pocket Dimension reads users' locations. Here's how it ensures that people don't get doxxed while still allowing users to easily connect to each other.
@@ -91,12 +97,12 @@ sequenceDiagram
   user->>client: Open app
   client->>gps: Get user location
     gps->>client: 
-  client->>did_api: Send coordinates to backend
-  did_api->>did_api: Salt and hash coordinates
-  did_api->>client: Return hashed coordinates
+  client->>did_api: Send hashed coordinates to backend
+  did_api->>did_api: Salt and double hash coordinates
+  did_api->>client: Return salted/hashed coordinates
 ```
 
-The salted coordinate hash can be safely shared with others, since there's no way to reverse engineer the hash to get someone's location. Pocket Dimension also maintains privacy by simply keeping users anonymous.
+The salted coordinate hash can be safely shared with others, since there's no way to reverse engineer the hash to get someone's location. Pocket Dimension also maintains privacy by simply keeping users anonymous. This anonymity is in some ways more useful than salting and hashing the coordinates, since it protects users not just from third-party attackers, but from Pocket Dimension itself.
 
 ### Multiplayer initialization sequence
 
