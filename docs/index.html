@@ -150,6 +150,19 @@
         background: #8e8;
         padding: 1em 2em;
       }
+      .bouncing {
+        animation: bounce linear infinite 2s;
+      }
+      @keyframes bounce {
+        from, to {
+          box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.2);
+          transform: translateY(0px);
+        }
+        50%, 70% {
+          box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.2);
+          transform: translateY(-5px);
+        }
+      }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM8FL0FCSP" defer></script>
@@ -187,7 +200,7 @@
       <a href="https://youtu.be/14VDYy873io" target="_blank">
         Video description
       </a>
-      <a href="https://www.kickstarter.com/projects/matthew-bernardo/pocket-dimension" target="_blank">Kickstarter</a>
+      <a class="bouncing" href="https://www.kickstarter.com/projects/matthew-bernardo/pocket-dimension" target="_blank">Kickstarter</a>
       <!-- <a
         href="https://www.kickstarter.com/projects/matthew-bernardo/pocket-dimension?ref=ba9zli&token=12bd0873"
         target="_blank">
